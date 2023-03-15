@@ -1,0 +1,45 @@
+.accordion-item {
+    border-bottom: 2px solid #ebebeb;
+    padding: 1em;
+}
+
+.accordion-item.expanded {
+    border-bottom: 2px solid #ebebeb;
+    padding: 1em;
+}
+
+.accordion-item .accordion-title {
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-size: 1pc;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 0.5em;
+}
+
+.accordion-item .accordion-title::after {
+    display: inline-block;
+    content: '>';
+    font-size: large;
+    padding-left: 12px;
+}
+
+.accordion-item.expanded .accordion-title::after {
+    display: inline-block;
+    content: '<';
+    font-size: large;
+    padding-left: 12px;
+}
+
+.accordion-item .accordion-details {
+    display: none;
+}
+
+.accordion-item.expanded .accordion-details {
+    display: flex;
+    font-size: 14px;
+    line-height: 1.75;
+    padding: 1em 0 1em;
+}
+
