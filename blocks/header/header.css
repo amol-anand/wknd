@@ -122,11 +122,23 @@ header nav .nav-sections ul  {
   font-weight: 500;
   list-style: none;
   padding-left: 0;
+  align-items: center;
 }
 
 header nav .nav-sections li {
   font-size: 20px;
   font-weight: 500;
+  padding: 15px 17px;
+}
+
+header nav .nav-sections li:hover {
+  background-color: #ffea00;
+  padding: 15px 17px;
+}
+
+header nav .nav-sections li:hover a {
+  list-style: none;
+  text-decoration: none;
 }
 
 header nav[aria-expanded='true'] .nav-sections {
