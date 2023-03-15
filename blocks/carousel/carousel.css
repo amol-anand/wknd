@@ -2,6 +2,10 @@ main .carousel-container {
   padding: 0;
 }
 
+main .carousel-container {
+  grid-area: hero;
+}
+
 main .carousel {
   display: flex;
   scroll-snap-type: x mandatory;
@@ -38,7 +42,7 @@ main .carousel > div {
   display: flex;
 }
 
-main .carousel div.carousel-text {
+main .carousel div.carousel-text:not(:empty) {
   max-width: 1200px;
   margin: 0 auto;
   background-color: white;

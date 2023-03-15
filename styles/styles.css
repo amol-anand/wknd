@@ -199,7 +199,6 @@ body.activity main {
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-areas:
-    "bread bread"
     "hero hero"
     "left main";
 }
