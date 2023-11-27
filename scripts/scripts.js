@@ -145,6 +145,20 @@ async function loadDemoConfig() {
   window.wknd.demoConfig = demoConfig;
 }
 
+// eslint-disable-next-line consistent-return
+const publishListener = () => {
+  console.log('publish clicked!!!!!');
+  // eslint-disable-next-line no-restricted-globals, no-alert
+  if (confirm('Are you sure you want to publish this content live?')) {
+    // let the sidekick continue publishing
+    // eslint-disable-next-line no-console
+    console.debug('publish clicked');
+  } else {
+    // avoid publishing
+    return false;
+  }
+};
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -230,6 +244,17 @@ async function loadLazy(doc) {
     loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   }
   addFavIcon(`${window.wknd.demoConfig.demoBase || window.hlx.codeBasePath}/favicon.png`);
+
+   // Add plugin listeners here
+   const sk = document.querySelector('helix-sidekick');
+   if (sk) {
+     sk.addEventListener('publish', publishListener);
+     const publishButtons = sk.querySelectorAll('button[title="Publish"]');
+     publishButtons.forEach((publishButton) => {
+       // eslint-disable-next-line consistent-return
+       publishButton.addEventListener('mousedown', publishListener);
+     });
+   }
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
