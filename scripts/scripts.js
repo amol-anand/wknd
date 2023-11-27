@@ -248,7 +248,7 @@ async function loadLazy(doc) {
    // Add plugin listeners here
    const sk = document.querySelector('helix-sidekick');
    if (sk) {
-     sk.addEventListener('publish', publishListener);
+     sk.addEventListener('sk:publish', publishListener);
      const publishButtons = sk.querySelectorAll('button[title="Publish"]');
      publishButtons.forEach((publishButton) => {
        // eslint-disable-next-line consistent-return
