@@ -207,31 +207,31 @@ async function createForm(formURL) {
   applyRules(form, rules);
 
   // add calendar functionality
-  // await loadScript(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.js`);
-  // loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.css`);
-  // loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/light.min.css`);
-  // const calOptions = {
-  //   input: true,
-  //   settings: {
-  //     selection: {
-  //       time: 24,
-  //     },
-  //   },
-  //   actions: {
-  //     changeToInput(e, calendar, dates, time, hours, minutes) {
-  //       if (dates[0]) {
-  //         const selectedDT = new Date(`${dates[0]}T${hours}:${minutes}:00.000`);
-  //         calendar.HTMLInputElement.value = selectedDT.toISOString();
-  //       } else {
-  //         calendar.HTMLInputElement.value = '';
-  //       }
-  //     },
-  //   },
-  // };
+  await loadScript(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.js`);
+  loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.css`);
+  loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/light.min.css`);
+  const calOptions = {
+    input: true,
+    settings: {
+      selection: {
+        time: 24,
+      },
+    },
+    actions: {
+      changeToInput(e, calendar, dates, time, hours, minutes) {
+        if (dates[0]) {
+          const selectedDT = new Date(`${dates[0]}T${hours}:${minutes}:00.000`);
+          calendar.HTMLInputElement.value = selectedDT.toISOString();
+        } else {
+          calendar.HTMLInputElement.value = '';
+        }
+      },
+    },
+  };
 
-  // // eslint-disable-next-line no-undef
-  // const fromCalendar = new VanillaCalendar('#datetime', calOptions);
-  // fromCalendar.init();
+  // eslint-disable-next-line no-undef
+  const fromCalendar = new VanillaCalendar('#datetime', calOptions);
+  fromCalendar.init();
 
   return (form);
 }
