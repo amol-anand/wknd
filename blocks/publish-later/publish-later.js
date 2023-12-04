@@ -192,17 +192,16 @@ async function createForm(formURL) {
         console.warn(`Invalid Rule ${fd.Rules}: ${e}`);
       }
     }
-    const previewURL = document.URL.toString();
-    const pathField = form.querySelector('input#path');
-    if (pathField) {
-      pathField.type = 'hidden';
-      pathField.value = previewURL;
-      const pathLabel = form.querySelector('label[for="path"]');
-      if (pathLabel) pathLabel.remove();
-    }
     form.append(fieldWrapper);
   });
-
+  const previewURL = document.URL.toString();
+  const pathField = form.querySelector('input#path');
+  if (pathField) {
+    pathField.type = 'hidden';
+    pathField.value = previewURL;
+    const pathLabel = form.querySelector('label[for="path"]');
+    if (pathLabel) pathLabel.remove();
+  }
   form.addEventListener('change', () => applyRules(form, rules));
   applyRules(form, rules);
   return (form);
@@ -211,33 +210,10 @@ async function createForm(formURL) {
 export default async function decorate(block) {
   const form = block.querySelector('a[href$=".json"]');
   if (form) {
-    form.replaceWith(await createForm(form.href));
-      // add calendar functionality
-      await loadScript(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.js`);
-      loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.css`);
-      loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/light.min.css`);
-      const calOptions = {
-        input: true,
-        settings: {
-          selection: {
-            time: 24,
-          },
-        },
-        actions: {
-          changeToInput(e, calendar, dates, time, hours, minutes) {
-            if (dates[0]) {
-              const selectedDT = new Date(`${dates[0]}T${hours}:${minutes}:00.000`);
-              calendar.HTMLInputElement.value = selectedDT.toISOString();
-            } else {
-              calendar.HTMLInputElement.value = '';
-            }
-          },
-        },
-      };
-
-      // eslint-disable-next-line no-undef
-      const fromCalendar = new VanillaCalendar('#datetime', calOptions);
-      fromCalendar.init();
-
+    await form.replaceWith(await createForm(form.href));
+    // add calendar functionality
+    await loadScript(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.js`);
+    loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/vanilla-calendar.min.css`);
+    loadCSS(`${window.hlx.codeBasePath}/blocks/publish-later/light.min.css`);
   }
 }

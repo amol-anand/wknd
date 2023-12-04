@@ -160,6 +160,34 @@ const publishLaterListener = async () => {
     modal.querySelector('button[name="close"]')?.addEventListener('click', () => modal.close());
   });
   customModal.showModal();
+  const calOptions = {
+    input: true,
+    settings: {
+      selection: {
+        time: 24,
+      },
+    },
+    actions: {
+      changeToInput(e, calendar, dates, time, hours, minutes) {
+        if (dates[0]) {
+          const selectedDT = new Date(`${dates[0]}T${hours}:${minutes}:00.000`);
+          calendar.HTMLInputElement.value = selectedDT.toISOString();
+        } else {
+          calendar.HTMLInputElement.value = '';
+        }
+      },
+    },
+  };
+
+  // eslint-disable-next-line no-undef
+  const dateTimeEl = document.querySelector('#datetime');
+  if (dateTimeEl) {
+    // eslint-disable-next-line no-undef
+    const calendar = new VanillaCalendar(dateTimeEl, calOptions);
+    calendar.init();
+    const calendarContainer = document.querySelector('.vanilla-calendar');
+    if (calendarContainer) customModal.appendChild(calendarContainer);
+  }
 };
 
 /**
