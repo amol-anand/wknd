@@ -1,4 +1,4 @@
-import { loadCSS } from "../../scripts/lib-franklin";
+import { loadCSS } from "../../scripts/lib-franklin.js";
 
 /**
  * Loads a non module JS file.
