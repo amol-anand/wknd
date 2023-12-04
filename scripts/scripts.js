@@ -151,7 +151,7 @@ const publishLaterListener = async () => {
   const section = createTag('div');
   const wrapper = createTag('div');
   section.appendChild(wrapper);
-  const plBlock = buildBlock('form', `<a href="${window.hlx.codeBasePath}/drafts/amol/publish-later.json">${window.hlx.codeBasePath}/drafts/amol/publish-later.json</a>`);
+  const plBlock = buildBlock('publish-later', `<a href="${window.hlx.codeBasePath}/drafts/amol/publish-later.json">${window.hlx.codeBasePath}/drafts/amol/publish-later.json</a>`);
   wrapper.appendChild(plBlock);
   decorateBlock(plBlock);
   await loadBlock(plBlock);
