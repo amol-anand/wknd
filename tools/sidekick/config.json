@@ -14,7 +14,7 @@
       "id": "publishlater",
       "title": "Publish Later",
       "environments": [
-        "preview"
+        "dev", "preview"
       ],
       "event": "publishlater"
     }
