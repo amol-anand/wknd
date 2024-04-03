@@ -9,6 +9,22 @@
       "paletteRect": "top: auto; bottom: 20px; left: 20px; height: 398px; width: 360px;",
       "url": "/block-library/library",
       "includePaths": [ "**.docx**" ]
+    },
+    {
+      "id": "publishlater",
+      "title": "Publish Later",
+      "environments": [
+        "dev", "preview"
+      ],
+      "event": "publishlater"
+    },
+    {
+      "id": "generate-variations",
+      "title": "Generate Variations",
+      "url": "https://experience.adobe.com/aem/generate-variations",
+      "passConfig": true,
+      "environments": [ "preview", "live", "edit" ],
+      "includePaths": ["**.docx**"]
     }
   ]
 }
